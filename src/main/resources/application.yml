@@ -14,7 +14,7 @@ spring:
     port: 6379
 
 jwt:
-  secret: super-secreto-que-cambiarás
+  secret: supersecreto12345678901234567890
   expiration: 3600000 # 1 hora en milisegundos
 
 management:
