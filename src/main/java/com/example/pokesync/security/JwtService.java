@@ -11,11 +11,9 @@ import java.util.Date;
 
 @Service
 public class JwtService {
-    @Value("${jwt.secret}")
-    private String jwtSecret;
+    private String jwtSecret = "supersecreto12345678901234567890";
+    private long jwtExpirationMs = 3600000;
 
-    @Value("${jwt.expiration}")
-    private long jwtExpirationMs;
 
     public String generateToken(Trainer trainer) {
         return Jwts.builder()

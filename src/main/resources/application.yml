@@ -14,8 +14,8 @@ spring:
     port: 6379
 
 jwt:
-  secret: supersecreto12345678901234567890
-  expiration: 3600000 # 1 hora en milisegundos
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION} # 1 hora en milisegundos
 
 management:
   endpoints:

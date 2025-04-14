@@ -16,9 +16,9 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService{
 
-    private TrainerRepository trainerRepository;
-    private BCryptPasswordEncoder passwordEncoder;
-    private JwtService jwtService;
+    private final TrainerRepository trainerRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
     @Override
     public AuthResponse register(RegisterRequest request) {

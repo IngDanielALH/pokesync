@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - pokesync-net
+
+  backend:
+    build: .
+    container_name: pokesync-api
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/pokesync
+      - JWT_SECRET=supersecreto12345678901234567890
+      - JWT_EXPIRATION=3600000
+    depends_on:
+      - mongo
+    networks:
+      - pokesync-net
+
+networks:
+  pokesync-net:

@@ -4,6 +4,8 @@ import com.example.pokesync.dto.AuthRequest;
 import com.example.pokesync.dto.AuthResponse;
 import com.example.pokesync.dto.RegisterRequest;
 import com.example.pokesync.service.AuthServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
+    private static final Logger log = LoggerFactory.getLogger(AuthController.class);
     private final AuthServiceImpl authService;
 
     public AuthController(AuthServiceImpl authService) {
@@ -21,6 +24,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+        log.info("Iniciando petición de registro: " + request.toString());
         return ResponseEntity.ok(authService.register(request));
     }
 
