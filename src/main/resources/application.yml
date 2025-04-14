@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/pokesync
+  kafka:
+    bootstrap-servers: localhost:9092
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+
+jwt:
+  secret: super-secreto-que-cambiarás
+  expiration: 3600000 # 1 hora en milisegundos
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
