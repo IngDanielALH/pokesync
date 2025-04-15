@@ -26,6 +26,9 @@ public class PokemonService {
             PokemonDTO dto = new PokemonDTO();
             dto.setName(json.getString("name"));
             dto.setId(json.getInt("id"));
+            dto.setHeight(json.getInt("height"));
+            dto.setWeight(json.getInt("weight"));
+
 
             List<String> types = new ArrayList<>();
             json.getJSONArray("types").forEach(item -> {

@@ -14,6 +14,6 @@ public class PokemonDTO {
     private Integer id;
     private String name;
     private List<String> types;
-    private Float height;
-    private Float weight;
+    private Integer height;
+    private Integer weight;
 }
