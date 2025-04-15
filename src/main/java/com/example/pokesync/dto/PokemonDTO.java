@@ -2,6 +2,7 @@ package com.example.pokesync.dto;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
@@ -10,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Builder
-public class PokemonDTO {
+public class PokemonDTO implements Serializable {
     private Integer id;
     private String name;
     private List<String> types;

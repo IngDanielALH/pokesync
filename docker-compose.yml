@@ -1,6 +1,19 @@
 version: '3.8'
 
 services:
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - pokesync-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
   mongo:
     image: mongo:6
     container_name: mongo
@@ -16,23 +29,18 @@ services:
       - "8080:8080"
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/pokesync
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
       - JWT_SECRET=supersecreto12345678901234567890
       - JWT_EXPIRATION=3600000
     depends_on:
-      - mongo
+      redis:
+        condition: service_healthy
+      mongo:
+        condition: service_started
     networks:
       - pokesync-net
-
-  sonarqube:
-    image: sonarqube:community
-    container_name: sonarqube
-    ports:
-      - "9000:9000"
-    environment:
-      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
-    networks:
-      - pokesync-net
-
+    restart: on-failure
 
 networks:
   pokesync-net:

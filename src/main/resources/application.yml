@@ -4,14 +4,15 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/pokesync
+      uri: mongodb://mongo:27017/pokesync
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: kafka:9092
   cache:
     type: redis
   redis:
-    host: localhost
-    port: 6379
+    host: ${SPRING_REDIS_HOST}
+    port: ${SPRING_REDIS_PORT:6379}
+    timeout: 60000
 
 jwt:
   secret: ${JWT_SECRET}
