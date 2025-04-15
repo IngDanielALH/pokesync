@@ -24,7 +24,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
-        log.info("Iniciando petición de registro: " + request.toString());
+        log.info("Iniciando petición de registro: {}", request);
         return ResponseEntity.ok(authService.register(request));
     }
 

@@ -1,6 +1,5 @@
 package com.example.pokesync.security;
 
-import com.example.pokesync.config.SecurityConfig;
 import com.example.pokesync.repository.TrainerRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -21,7 +20,7 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
-    private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+    private static final Logger log = LoggerFactory.getLogger(JwtAuthFilter.class);
 
     private final JwtService jwtService;
     private final TrainerRepository trainerRepository;

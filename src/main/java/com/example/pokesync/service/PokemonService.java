@@ -19,7 +19,6 @@ public class PokemonService {
 
         try {
             String response = restTemplate.getForObject(uri, String.class);
-            System.out.println("REsponse de la api: " + response);
 
             JSONObject json = new JSONObject(response);
 
